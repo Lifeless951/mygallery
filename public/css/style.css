@@ -1,0 +1,167 @@
+.wrapper {
+    width: 900px;
+    margin: 0 auto;
+}
+
+.upload-form {
+    margin-bottom: 50px;
+}
+
+.upload-form__list {
+    width: 650px;
+    margin: 0 auto;
+	padding: 0;
+	list-style: none;
+}
+
+.upload-form__item {
+	display: flex;
+	margin-bottom: 20px;
+}
+
+.upload-form__item:last-child {
+	margin-bottom: 0;
+}
+
+.upload-form__filename-output {
+    box-sizing: border-box;
+    width: 70%;
+    padding: 5px 0;
+
+    font-size: 16px;
+    line-height: 20px;
+
+    text-align: center;
+}
+
+.upload-form__file-input {
+    display: none;
+}
+
+.upload-form__chose-file {
+    box-sizing: border-box;
+    width: 30%;
+    border: 1px solid black;
+
+    font-size: 16px;
+    line-height: 20px;
+
+    background: #44aa21;
+
+    cursor: pointer;
+    text-align: center;
+}
+
+.upload-form__chose-file::before {
+    position: relative;
+    top: 5px;
+
+    content: 'Выбрать файл';
+}
+
+.upload-form__chose-file:hover,
+.upload-form__submit:hover {
+    background: #44b021;
+}
+
+.upload-form__image-name {
+	box-sizing: border-box;
+    width: 70%;
+    padding: 5px 0;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.upload-form__submit {
+    width: 30%;
+    border: 1px solid black;
+
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 20px;
+
+    background: #44aa21;
+
+    cursor: pointer;
+}
+
+
+.gallery__list {
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+
+    flex-wrap: wrap;
+}
+
+.gallery__image-title {
+	display: flex;
+	justify-content: space-between;
+}
+
+.gallery__item {
+    margin-bottom: 20px;
+}
+
+.gallery__item figure {
+	margin: 0;
+	padding: 0;
+}
+
+.gallery__item:nth-of-type(3n+2) {
+    margin: 0 75px;
+    margin-bottom: 20px;
+}
+
+.gallery__picture {
+    max-width: 250px;
+    height: auto;
+}
+
+
+.find-form {
+    margin-bottom: 20px;
+}
+
+.find-form__wrapper {
+    width: 650px;
+    margin: 0 auto;
+    display: flex;
+}
+
+.find-form__search {
+    box-sizing: border-box;
+    width: 75%;
+    padding: 5px 0;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.find-form__submit {
+    box-sizing: border-box;
+    width: 25%;
+    border: 1px solid black;
+
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 20px;
+
+    background: #44aa21;
+
+    cursor: pointer;
+}
+
+.image-wrapper{
+    margin: 0;
+}
+
+.image-wrapper img {
+    max-width: 900px;
+    height: auto;
+}
+
+.image-wrapper__caption {
+    text-align: center;
+}

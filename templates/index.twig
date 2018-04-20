@@ -1,0 +1,17 @@
+<section class="gallery">
+    <ul class="gallery__list">
+        {% for data in value %}
+        <li class='gallery__item'>
+            <figure>
+                <a href='{{ value.origPath }}' target='_blank'>
+                    <img src='{{ value.thumbPath }}' class='gallery__picture'>
+                </a>
+                <figcaption class="gallery__image-title">
+                    <span class="gallery__image-name">{{ value.imageName }}</span>
+                    <span class="gallery__num-of-views">{{ value.viewsCount }}</span>
+                </figcaption>
+            </figure>
+        </li>
+        {% endfor %}
+    </ul>
+</section>

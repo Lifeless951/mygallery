@@ -1,0 +1,17 @@
+<section class="upload-form">
+	<form action="/upload/" method="POST" enctype="multipart/form-data">
+		<ul class="upload-form__list">
+			<li class="upload-form__item">
+				<input type="hidden" name="MAX_FILE_SIZE" value="30000">
+				<input type="text" disabled class="upload-form__filename-output" id='fileNameReceiver'>
+				<label class="upload-form__chose-file">
+					<input type="file" accept="image/jpeg, image/png, image/gif" id="fileNameSource" class="upload-form__file-input" name="imageFile">
+				</label>
+			</li>
+			<li class="upload-form__item">
+				<input type="text" class="upload-form__image-name" name="imageName" placeholder="Введите имя картинки">
+				<input type="submit" class="upload-form__submit">
+			</li>
+		</ul>
+	</form>
+</section>
