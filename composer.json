@@ -1,14 +1,19 @@
 {
-    "name": "mygallery/mygallery",
-    "type": "project",
-    "require": {
-        "twig/twig": "^2.4"
-    },
-    "authors": [
-        {
-            "name": "Markin Mihail",
-            "email": "markin526445@gmail.com"
-        }
-    ],
-    "minimum-stability": "stable"
+  "name": "mygallery/mygallery",
+  "type": "project",
+  "require": {
+    "twig/twig": "^2.4"
+  },
+  "authors": [
+    {
+      "name": "Markin Mihail",
+      "email": "markin526445@gmail.com"
+    }
+  ],
+  "minimum-stability": "stable",
+  "autoload": {
+    "psr-4": {
+      "MyGallery\\": "src/"
+    }
+  }
 }

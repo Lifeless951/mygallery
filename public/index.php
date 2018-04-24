@@ -1,14 +1,12 @@
 <?php
 
-include SITE_ROOT . '/config.php';
-require SITE_ROOT . '/composer/autoload.php';
+require '../vendor/autoload.php';
 
-include_once '../core/Router.php';
-include_once '../core/Controller.php';
-include_once '../core/Model.php';
-include_once '../core/View.php';
+use MyGallery\MyGalleryKernel;
+use MyGallery\MyGalleryConfig;
 
 
-Router::start();
-
+$config = new MyGalleryConfig();
+MyGalleryKernel::init($config);
+MyGalleryKernel::start();
 
