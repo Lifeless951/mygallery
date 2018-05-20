@@ -9,7 +9,8 @@ class MyGalleryConfig
     private $dbInfo;
     private $routes;
     
-    public function __construct(/*TODO: создать аргументы для конструктора*/)
+    
+    public function __construct()
     {
         $config = include $_SERVER['DOCUMENT_ROOT'] . '/../config/config.php';
         $routes = include $_SERVER['DOCUMENT_ROOT'] . '/../config/routes.php';
@@ -32,6 +33,8 @@ class MyGalleryConfig
      */
     public function getDbInfo()
     {
+        $dsn = "{$this->dbInfo['db_prefix']}:host={$this->dbInfo['host']};dbname={$this->dbInfo['db_name']}";
+        $this->dbInfo['dsn'] = $dsn;
         return $this->dbInfo;
     }
     
@@ -42,6 +45,4 @@ class MyGalleryConfig
     {
         return $this->routes;
     }
-    
-    
 }

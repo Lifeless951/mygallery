@@ -12,17 +12,18 @@ abstract class Controller
     protected $isAjax;
     
     
-    public function __construct()
+    public function __construct(View $view, Model $model = NULL)
     {
         $this->method = $_SERVER['REQUEST_METHOD'];
-        $this->view = new View();
+        $this->view = $view;
+        $this->model = $model;
     }
     
     protected function loadModel(string $modelName)
     {
         $modelNamespace = 'MyGallery\\Models\\';
         $modelClass = $modelNamespace . $modelName;
-        if ( !class_exists($modelClass) ) {
+        if ( class_exists($modelClass) ) {
             $this->model = new $modelClass();
         }
     }

@@ -3,19 +3,21 @@
 namespace MyGallery\Controllers;
 
 use MyGallery\Core\Controller;
+use MyGallery\Libraries\Authentication\MySession;
 
 
 class AccountController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->loadModel('AccountModel');
-    }
-    
     public function loginAction()
     {
+        MySession::regenerateId();
         echo 'Страница логина ' . __CLASS__;
+        
+    }
+    
+    public function logoutAction()
+    {
+        MySession::regenerateId();
     }
     
     public function registerAction()

@@ -1,33 +1,23 @@
 <?php
 
-namespace MyGallery\Components\Database;
+namespace MyGallery\Libraries\Database;
 
 
 class PDOConnection implements IDBConnection
 {
     private $db;
     
-    public function __construct(array $DBConnectionData)
+    public function __construct(\PDO $db)
     {
-        $this->connect($DBConnectionData);
+        $this->db = $db;
+        $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
     }
     
-    public function connect(array $DBConnectionData)
+    public function get(string $sql, array $params = [], int $fetchMode = NULL)
     {
         try {
-            $this->db = new \PDO($DBConnectionData['DSN'], $DBConnectionData['login'], $DBConnectionData['password']);
-            $this->db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        } catch (\PDOException $e) {
-            throw new Exception('Не удалось подключиться к БД', 1000, $e);
-        }
-    }
-    
-    public function get(string $sql, array $params, int $fetchMode = NULL)
-    {
-        try {
-            $fetchMode = $fetchMode ? $fetchMode : \PDO::FETCH_ASSOC;
-            $stmt = $this->db->prepare($sql);
-            $stmt->execute($params);
+            $stmt = $this->preparePDOStatement($sql, $params);
+            $stmt->execute();
         } catch (\PDOException $e) {
             throw new \Exception('Не удалось выполнить запрос', 1001, $e);
         }
@@ -35,23 +25,22 @@ class PDOConnection implements IDBConnection
         return $stmt->fetchAll($fetchMode);
     }
     
-    public function set(string $sql, array $params)
-    {
-        // TODO: Implement set() method.
-    }
-    
-    public function unsafeGet(string $sql, int $fetchMode = NULL)
+    public function set(string $sql, array $params = [])
     {
         try {
-            $result = $this->db->query($sql)->fetchAll($fetchMode);
+            $stmt = $this->preparePDOStatement($sql, $params);
+            $stmt->execute();
         } catch (\PDOException $e) {
             throw new \Exception('Не удалось выполнить запрос', 1001, $e);
-            // TODO: Создать свой класс исключений БД.
         }
     }
     
-    public function unsafeSet(string $sql)
+    private function preparePDOStatement(string $sql, array $params = [])
     {
-        // TODO: Implement unsafeSet() method.
+        $stmt = $this->db->prepare($sql);
+        foreach ($params as $key => $val) {
+            $stmt->bindValue(':' . $key, $val);
+        }
+        return $stmt;
     }
 }

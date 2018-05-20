@@ -8,12 +8,6 @@ use MyGallery\Exceptions\ViewException;
 
 class MainController extends Controller
 {
-    public function __construct()
-    {
-        parent::__construct();
-        $this->loadModel('MainModel');
-    }
-    
     public function indexAction()
     {
         $pageName = 'index';

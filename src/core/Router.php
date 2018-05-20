@@ -23,6 +23,8 @@ class Router
      * Проверяем REQUEST_URI, на соотв. одному из шаблонов, заданных в src/config/routes.php
      * Если находим, то создаем нужный контроллер
      * Иначе показываем страницу 404
+     * @throws RouterException
+     * @return array
      */
     public function run()
     {
@@ -30,15 +32,18 @@ class Router
         $route = explode('/', $this->getRoute($uri));
         
         $controllerName = 'MyGallery\\Controllers\\' . ucfirst($route[0]) . 'Controller';
+        $modelName = 'MyGallery\\Models\\' . ucfirst($route[0]) . 'Model';
+        $viewName = 'MyGallery\\Core\\View';
         $actionName = $route[1] . 'Action';
         $params = array_slice($route, 2);
         
-        if ( !class_exists($controllerName) ) {
-            throw new RouterException('Контроллер не существует!', 1003);
-        }
-        
-        $controller = new $controllerName();
-        $controller->$actionName(...$params);
+        return [
+            'controllerName' => $controllerName,
+            'modelName' => $modelName,
+            'viewName' => $viewName,
+            'actionName' => $actionName,
+            'params' => $params
+        ];
     }
     
     

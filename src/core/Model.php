@@ -2,13 +2,14 @@
 
 namespace MyGallery\Core;
 
-use MyGallery\Components\Database;
+use MyGallery\Libraries\Database;
 
 abstract class Model
 {
-    public function __construct()
+    protected $db;
+    
+    public function __construct($db)
     {
-    
+        $this->db = new Database\PDOConnection($db);
     }
-    
 }

@@ -5,8 +5,12 @@
             <input type="submit" class="search__submit" value="Искать">
         </form>
         <ul class="user-data">
-            <li class="user-data__item"><a href="/account/login" class="user-data__login">Вход</a></li>
-            <li class="user-data__item"><a href="/account/register" class="user-data__register">Регистрация</a></li>
+            {% if ( data.username ) %}
+                <li class="user-data__item"><a href="/">{{ data.username|escape }}</a></li>
+            {% else %}
+                <li class="user-data__item"><a href="/account/login" class="user-data__login">Вход</a></li>
+                <li class="user-data__item"><a href="/account/register" class="user-data__register">Регистрация</a></li>
+            {% endif %}
         </ul>
     </div>
 </header>
